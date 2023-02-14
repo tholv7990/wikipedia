@@ -2,5 +2,18 @@
     <span class="wiki__url"> https://en.wikipedia.org/wiki/Women%27s_high_jump_world_record_progression</span>
     <button [disabled]="loading" class="wiki__btn" (click)="onGetData()">Get Data</button>
 
+    <ng-container *ngIf="!!heights?.length">
+        <div class="wiki__result">
+            <span>{{heights}}</span>
+        </div>
+
+        <button class="wiki__btn" (click)="onPlottingChart()">Plotting Chart</button>
+
+        <div *ngIf="!!lineChartData?.length" class="wiki__chart">
+            <canvas #canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [type]="'line'">
+            </canvas>
+        </div>
+
+    </ng-container>
 
 </div>
