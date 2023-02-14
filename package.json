@@ -20,6 +20,7 @@
     "@angular/router": "^15.1.0",
     "chart.js": "^4.2.1",
     "cheerio": "^1.0.0-rc.12",
+    "file-saver": "^2.0.5",
     "ng2-charts": "^4.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

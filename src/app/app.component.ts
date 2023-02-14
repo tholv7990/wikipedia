@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { WikipediaService } from 'src/libs';
 import { ChartDataset } from 'chart.js';
-
+import FileSaver from 'file-saver';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -42,9 +42,15 @@ export class AppComponent {
     }
 
     this.lineChartData = [
-      { data: this.heights, label: 'Wikipedia Heights' },
+      { data: this.heights, label: 'Woman Jump Heights' },
     ];
 
     this.lineChartLabels = labels;
+  }
+
+  public onSaveToImage() {
+    this.image = this.canvas.nativeElement.toDataURL(this.canvas.nativeElement);
+
+    FileSaver.saveAs(this.image, "image.jpg");
   }
 }

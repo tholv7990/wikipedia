@@ -9,10 +9,16 @@
 
         <button class="wiki__btn" (click)="onPlottingChart()">Plotting Chart</button>
 
-        <div *ngIf="!!lineChartData?.length" class="wiki__chart">
-            <canvas #canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [type]="'line'">
-            </canvas>
-        </div>
+        <ng-container *ngIf="!!lineChartData?.length">
+
+            <div class="wiki__chart">
+                <canvas #canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [type]="'line'">
+                </canvas>
+            </div>
+
+            <button *ngIf="!!lineChartData.length" class="wiki__btn w-180" (click)="onSaveToImage()">Save to
+                file</button>
+        </ng-container>
 
     </ng-container>
 
