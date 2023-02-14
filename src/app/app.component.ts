@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
+import { WikipediaService } from 'src/libs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  constructor() { }
+
+  public loading = false;
+  public heights: number[] = [];
+
+  constructor(
+    private wikipediaService: WikipediaService
+  ) { }
+
+  public async onGetData() {
+    this.loading = true;
+
+    this.heights = await lastValueFrom(this.wikipediaService.getData());
+    this.loading = false;
+  }
 }
