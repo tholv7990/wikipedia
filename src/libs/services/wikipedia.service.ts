@@ -33,9 +33,33 @@ export class WikipediaService {
             tableData.push(row);
           });
 
-          return tableData;
+          return this.extractNumericValues(tableData);
         })
       );
+  }
+
+  private extractNumericValues(tableData: any[]): number[] {
+
+    const heights: number[] = [];
+
+    for (let i = 0; i < tableData.length; i++) {
+      const row = tableData[i];
+
+      if (row.length > 0) {
+        // get the first row which contain the numeric
+        let height = row[0];
+
+        // 
+        height = height.substring(0, height.indexOf(" "));
+
+        const heightNumber = parseFloat(height);
+        if (!isNaN(heightNumber)) {
+          heights.push(heightNumber);
+        }
+      }
+    }
+
+    return heights;
   }
 
 }
