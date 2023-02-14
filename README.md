@@ -1,27 +1,13 @@
-# Wikipedia
+High level plan to implement the challenge: 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+1. Use the Angular framework to create the application.
+2. Use an HTTP client to fetch the HTML content of the Wikipedia page.
+3. Use a proxy server to bypass the CORS problem.
+4. Use a library such as cheerio.js to parse the HTML content and extract the table data.
+5. Use the extracted data to create a graph using a charting library such as Chart.js.
+6. Convert the chart to file image and save it using file-saver
+7. Implement tests using a testing framework such as Jasmine or Karma to ensure the application is working correctly and meets the requirements.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To run project we need to run the command below:
+1. npm install (this will install all the need dependencies)
+2. npm run serve (or ng serve)
