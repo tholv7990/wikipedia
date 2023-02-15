@@ -12,11 +12,13 @@ export class WikipediaService {
 
   constructor(private http: HttpClient) { }
 
-  public getData(): Observable<number[]> {
+  public getData(url: string): Observable<number[]> {
 
-    const url = `${this.api}Women%27s_high_jump_world_record_progression`
+    const fullURL = `${this.api}${url}`;
 
-    return this.http.get(url, { responseType: 'text' })
+    console.log('test 1 ', fullURL)
+
+    return this.http.get(fullURL, { responseType: 'text' })
       .pipe(
         map(html => {
           const $ = cheerio.load(html);

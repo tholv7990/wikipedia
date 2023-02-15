@@ -20,6 +20,8 @@ export class AppComponent {
   };
   public image: null;
 
+  private readonly url = `Women%27s_high_jump_world_record_progression`;
+
   @ViewChild('canvas') canvas: ElementRef;
 
   constructor(
@@ -29,7 +31,7 @@ export class AppComponent {
   public async onGetData() {
     this.loading = true;
 
-    this.heights = await lastValueFrom(this.wikipediaService.getData());
+    this.heights = await lastValueFrom(this.wikipediaService.getData(this.url));
     this.loading = false;
   }
 
