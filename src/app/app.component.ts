@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { WikipediaService } from 'src/libs';
 import { ChartDataset } from 'chart.js';
-import FileSaver from 'file-saver';
+import * as FileSaver from 'file-saver';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +14,7 @@ export class AppComponent {
   public heights: number[];
   public loading = false;
   public lineChartData: ChartDataset[]
-  public lineChartLabels: any[];
+  public lineChartLabels: number[];
   public lineChartOptions = {
     responsive: false
   };
@@ -36,7 +36,7 @@ export class AppComponent {
 
   public onPlottingChart() {
 
-    const labels = [];
+    const labels: number[] = [];
 
     for (let i = 1; i < this.heights.length + 1; i++) {
       labels.push(i)

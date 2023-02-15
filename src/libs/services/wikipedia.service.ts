@@ -27,9 +27,9 @@ export class WikipediaService {
           const table = $('table.wikitable');
           const rows = table.find('tr');
 
-          const tableData = [];
+          const tableData: string[][] = [];
           rows.each((i, elem) => {
-            const row = [];
+            const row: string[] = [];
             $(elem).find('td').each((j, td) => {
               row.push($(td).text().trim());
             });
@@ -46,7 +46,7 @@ export class WikipediaService {
       );
   }
 
-  private extractNumericValues(tableData: any[]): number[] {
+  private extractNumericValues(tableData: string[][]): number[] {
 
     if (!tableData?.length)
       return [];
