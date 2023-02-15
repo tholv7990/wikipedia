@@ -38,5 +38,29 @@ describe('WikipediaService', () => {
     req.flush('<html></html>');
   });
 
+  it('should parse the HTML response and extract the numeric data from the table', () => {
+    const url = 'Women%27s_high_jump_world_record_progression';
+    const html = `
+      <table class="wikitable">
+        <tr>
+          <td>1.46 m (4 ft 9+1⁄4 in)</td>
+          <td>1.60</td>
+        </tr>
+        <tr>
+          <td>1.485 m (4 ft 10+1⁄4 in)</td>
+          <td>1.62</td>
+        </tr>
+      </table>
+    `;
+
+    service.getData(url).subscribe(data => {
+      expect(data).toEqual([
+        1.46, 1.485
+      ]);
+    });
+
+    const req = httpTestingController.expectOne(`wiki/${url}`);
+    req.flush(html);
+  });
 
 });
