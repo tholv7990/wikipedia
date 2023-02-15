@@ -22,5 +22,21 @@ describe('WikipediaService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('should make a GET request to the Wikipedia page and retrieve the HTML response', () => {
+    const url = 'Women%27s_high_jump_world_record_progression';
+
+    service.getData(url).subscribe(response => {
+      expect(response).toBeTruthy();
+    });
+
+    const req = httpTestingController.expectOne(req => {
+      return req.url === `wiki/${url}`;
+    });
+
+    expect(req.request.method).toEqual('GET');
+
+    req.flush('<html></html>');
+  });
+
 
 });

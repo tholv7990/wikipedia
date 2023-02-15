@@ -30,7 +30,6 @@ export class AppComponent {
 
   public async onGetData() {
     this.loading = true;
-
     this.heights = await lastValueFrom(this.wikipediaService.getData(this.url));
     this.loading = false;
   }

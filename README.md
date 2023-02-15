@@ -9,5 +9,9 @@ High level plan to implement the challenge:
 7. Implement tests using a testing framework such as Jasmine or Karma to ensure the application is working correctly and meets the requirements.
 
 To run project we need to run the command below:
-1. npm install (this will install all the need dependencies)
-2. npm run serve (or ng serve)
+1. install all dependencies:
+    -  npm install 
+2. start project: 
+    - npm run serve (or ng serve)
+3. to run the test: 
+    - npm run test

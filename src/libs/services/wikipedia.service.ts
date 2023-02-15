@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import * as cheerio from 'cheerio';
 
 @Injectable({
@@ -14,9 +14,10 @@ export class WikipediaService {
 
   public getData(url: string): Observable<number[]> {
 
-    const fullURL = `${this.api}${url}`;
+    if (!url)
+      return of([]);
 
-    console.log('test 1 ', fullURL)
+    const fullURL = `${this.api}${url}`;
 
     return this.http.get(fullURL, { responseType: 'text' })
       .pipe(
@@ -36,15 +37,23 @@ export class WikipediaService {
           });
 
           return this.extractNumericValues(tableData);
+        }),
+        catchError(error => {
+          console.log('error ', error);
+
+          return of([]);
         })
       );
   }
 
   private extractNumericValues(tableData: any[]): number[] {
 
+    if (!tableData?.length)
+      return [];
+
     const heights: number[] = [];
 
-    for (let i = 0; i < tableData.length; i++) {
+    for (let i = 0; i < tableData?.length; i++) {
       const row = tableData[i];
 
       if (row.length > 0) {
